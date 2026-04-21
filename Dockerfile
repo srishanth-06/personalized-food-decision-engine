@@ -9,4 +9,4 @@ COPY . .
 
 ENV PORT=8080
 
-CMD ["sh", "-c", "python manage.py migrate --noinput && gunicorn food_engine.wsgi:application --bind 0.0.0.0:$PORT"]
+CMD ["sh", "-c", "python manage.py migrate --noinput || true && gunicorn food_engine.wsgi:application --bind 0.0.0.0:$PORT"]
