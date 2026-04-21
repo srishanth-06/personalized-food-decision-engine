@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Analysis Result - Food Decision Engine{% endblock %}
+
+{% block content %}
+    <h1>Analysis Result</h1>
+
+    {% if result %}
+        <div style="margin-bottom: 2rem;">
+            <h3>Health Score: {{ result.health_score }} / 100</h3>
+            <p style="color: #475569; font-style: italic; margin-top: 0.5rem;">{{ result.analysis }}</p>
+        </div>
+
+        <h4>Suggestions</h4>
+        {% if result.suggestions %}
+            {% for s in result.suggestions %}
+                <p>💡 {{ s }}</p>
+            {% endfor %}
+        {% else %}
+            <p>None</p>
+        {% endif %}
+
+        <h4>Warnings</h4>
+        {% if result.warnings %}
+            {% for w in result.warnings %}
+                <p>⚠️ {{ w }}</p>
+            {% endfor %}
+        {% else %}
+            <p>None</p>
+        {% endif %}
+
+        {% if result.improvements %}
+            <h4>Recommended Improvements</h4>
+            {% for i in result.improvements %}
+                <p>🔧 {{ i }}</p>
+            {% endfor %}
+        {% endif %}
+
+    {% else %}
+        <p>No data found. Please <a href="{% url 'meal_input' %}">enter your meal details</a> first.</p>
+    {% endif %}
+
+    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+        <a href="{% url 'meal_input' %}" style="width: 100%; text-align: center; border: 1px solid #2563eb; color: #2563eb; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Restart Analysis</a>
+        <a href="{% url 'home' %}" class="btn-secondary" style="margin-top: 0;">Home</a>
+    </div>
+{% endblock %}

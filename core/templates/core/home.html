@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Welcome - Food Decision Engine{% endblock %}
+
+{% block content %}
+    <h1>Personalized Food Decision Engine</h1>
+    <p>Get instant feedback on your meals based on your fitness goals, budget, and living situation.</p>
+    <a href="{% url 'profile' %}" class="btn-primary" style="display: block; text-align: center; background: #2563eb; color: white; padding: 0.75rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; margin-top: 2rem;">Setup Profile &rarr;</a>
+    <p style="text-align: center; font-size: 0.875rem; color: #64748b; margin-top: 1rem;">Or <a href="{% url 'meal_input' %}" style="color: #2563eb;">skip to meal input</a></p>
+{% endblock %}

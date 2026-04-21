@@ -1,0 +1,6 @@
+*.pyc
+*__pycache__
+db.sqlite3
+.DS_Store
+final_test.py
+scratch_test.py

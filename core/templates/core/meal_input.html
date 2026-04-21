@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Enter Meal - Food Decision Engine{% endblock %}
+
+{% block content %}
+    <h1>Meal Details</h1>
+    <form method="POST" action="{% url 'meal_input' %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="meal">What did you eat?</label>
+            <input type="text" id="meal" name="meal" required placeholder="e.g. Chicken salad, Maggi, Rice and dal" autofocus>
+        </div>
+
+        <div class="form-group">
+            <label for="goal">Your Primary Goal</label>
+            <select id="goal" name="goal">
+                <option value="weight_loss">Weight Loss</option>
+                <option value="muscle_gain">Muscle Gain</option>
+                <option value="maintenance">Maintenance</option>
+                <option value="general_health" selected>General Health</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="budget">Available Budget</label>
+            <select id="budget" name="budget">
+                <option value="low">Economic (Under ₹50)</option>
+                <option value="medium" selected>Standard (₹50–₹150)</option>
+                <option value="high">Premium (Above ₹150)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="mode">Living Environment</label>
+            <select id="mode" name="mode">
+                <option value="hostel">Hostel (Limited cooking)</option>
+                <option value="home" selected>Home (Full kitchen)</option>
+            </select>
+        </div>
+
+        <button type="submit">Analyze Meal</button>
+    </form>
+
+    <a href="{% url 'home' %}" class="btn-secondary">&larr; Back to Home</a>
+{% endblock %}
